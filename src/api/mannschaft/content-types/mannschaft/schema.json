@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mannschafts",
+  "info": {
+    "singularName": "mannschaft",
+    "pluralName": "mannschafts",
+    "displayName": "Mannschaft",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Vorname": {
+      "type": "string"
+    },
+    "Nachname": {
+      "type": "string"
+    },
+    "Dienstgrad": {
+      "type": "string"
+    },
+    "Dienststatus": {
+      "type": "string"
+    },
+    "Chargen": {
+      "type": "boolean",
+      "default": false
+    },
+    "Profilbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Funktion": {
+      "type": "string"
+    },
+    "Standesbuchnummer": {
+      "type": "integer"
+    },
+    "Test": {
+      "type": "enumeration",
+      "enum": [
+        "Aktiv",
+        "Reserve",
+        "Jugend"
+      ],
+      "default": "Aktiv"
+    }
+  }
+}

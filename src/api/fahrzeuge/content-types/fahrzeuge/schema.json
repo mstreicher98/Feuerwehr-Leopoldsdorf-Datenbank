@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fahrzeuges",
+  "info": {
+    "singularName": "fahrzeuge",
+    "pluralName": "fahrzeuges",
+    "displayName": "Fahrzeuge",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Fahrzeug_id": {
+      "type": "string"
+    },
+    "Kurzbezeichnung": {
+      "type": "string"
+    },
+    "Bezeichnung": {
+      "type": "string"
+    },
+    "Funkname": {
+      "type": "string"
+    },
+    "Beschreibung": {
+      "type": "text"
+    },
+    "Titelbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Bilder": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Fahrzeugdaten": {
+      "type": "json"
+    }
+  }
+}
