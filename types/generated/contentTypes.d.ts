@@ -753,6 +753,41 @@ export interface ApiFahrzeugeFahrzeuge extends Schema.CollectionType {
   };
 }
 
+export interface ApiKommandoKommando extends Schema.CollectionType {
+  collectionName: 'kommandos';
+  info: {
+    singularName: 'kommando';
+    pluralName: 'kommandos';
+    displayName: 'Kommando';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Nachname: Attribute.String;
+    Vorname: Attribute.String;
+    Dienstgrad: Attribute.String;
+    Funktion: Attribute.String;
+    Beschreibung: Attribute.Text;
+    Profilbild: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::kommando.kommando',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::kommando.kommando',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMannschaftMannschaft extends Schema.CollectionType {
   collectionName: 'mannschafts';
   info: {
@@ -810,6 +845,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::authentication.authentication': ApiAuthenticationAuthentication;
       'api::fahrzeuge.fahrzeuge': ApiFahrzeugeFahrzeuge;
+      'api::kommando.kommando': ApiKommandoKommando;
       'api::mannschaft.mannschaft': ApiMannschaftMannschaft;
     }
   }

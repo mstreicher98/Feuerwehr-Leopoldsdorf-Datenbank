@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kommandos",
+  "info": {
+    "singularName": "kommando",
+    "pluralName": "kommandos",
+    "displayName": "Kommando",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nachname": {
+      "type": "string"
+    },
+    "Vorname": {
+      "type": "string"
+    },
+    "Dienstgrad": {
+      "type": "string"
+    },
+    "Funktion": {
+      "type": "string"
+    },
+    "Beschreibung": {
+      "type": "text"
+    },
+    "Profilbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
