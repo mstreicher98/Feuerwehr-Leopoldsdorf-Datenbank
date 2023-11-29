@@ -33,6 +33,9 @@
     },
     "isEnabled": {
       "type": "boolean"
+    },
+    "EhrenDG": {
+      "type": "boolean"
     }
   }
 }

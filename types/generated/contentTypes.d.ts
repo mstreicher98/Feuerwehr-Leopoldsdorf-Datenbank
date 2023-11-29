@@ -699,6 +699,7 @@ export interface ApiAuthenticationAuthentication extends Schema.CollectionType {
     Nachname: Attribute.String;
     isAdmin: Attribute.Boolean;
     isEnabled: Attribute.Boolean;
+    EhrenDG: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -810,6 +811,7 @@ export interface ApiMannschaftMannschaft extends Schema.CollectionType {
     Standesbuchnummer: Attribute.Integer;
     Test: Attribute.Enumeration<['Aktiv', 'Reserve', 'Jugend']> &
       Attribute.DefaultTo<'Aktiv'>;
+    EhrenDG: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
