@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "beitraeges",
+  "info": {
+    "singularName": "beitraege",
+    "pluralName": "beitraeges",
+    "displayName": "Beitraege",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titel": {
+      "type": "text"
+    },
+    "beitrag_id": {
+      "type": "text"
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "beitrag_id"
+    },
+    "datum": {
+      "type": "date"
+    },
+    "uhrzeit": {
+      "type": "time",
+      "default": "00:00"
+    },
+    "beitrag": {
+      "type": "blocks"
+    },
+    "titelbild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "bilder": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "allgemein",
+        "einsatz",
+        "uebung",
+        "jugend"
+      ]
+    }
+  }
+}
