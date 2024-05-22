@@ -774,7 +774,7 @@ export interface ApiFahrzeugeFahrzeuge extends Schema.CollectionType {
     Funkname: Attribute.String;
     Beschreibung: Attribute.Text;
     Titelbild: Attribute.Media;
-    Bilder: Attribute.Media;
+    Titelbild2: Attribute.Media;
     Fahrzeugdaten: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
