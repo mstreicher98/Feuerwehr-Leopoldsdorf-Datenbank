@@ -48,6 +48,9 @@
     },
     "sort_order": {
       "type": "integer"
+    },
+    "Status": {
+      "type": "string"
     }
   }
 }

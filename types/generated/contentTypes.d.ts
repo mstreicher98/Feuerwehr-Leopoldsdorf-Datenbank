@@ -888,6 +888,7 @@ export interface ApiFahrzeugeFahrzeuge extends Schema.CollectionType {
     Titelbild2: Attribute.Media;
     Fahrzeugdaten: Attribute.JSON;
     sort_order: Attribute.Integer;
+    Status: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
