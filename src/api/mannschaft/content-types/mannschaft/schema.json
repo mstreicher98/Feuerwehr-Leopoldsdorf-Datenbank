@@ -45,15 +45,6 @@
     "Standesbuchnummer": {
       "type": "integer"
     },
-    "Test": {
-      "type": "enumeration",
-      "enum": [
-        "Aktiv",
-        "Reserve",
-        "Jugend"
-      ],
-      "default": "Aktiv"
-    },
     "EhrenDG": {
       "type": "boolean",
       "default": false

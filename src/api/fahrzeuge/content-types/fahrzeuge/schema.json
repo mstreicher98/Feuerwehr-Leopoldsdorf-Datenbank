@@ -45,6 +45,9 @@
     },
     "Fahrzeugdaten": {
       "type": "json"
+    },
+    "sort_order": {
+      "type": "integer"
     }
   }
 }
