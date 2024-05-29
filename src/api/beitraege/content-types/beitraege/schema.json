@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -16,11 +16,9 @@
       "type": "text"
     },
     "beitrag_id": {
-      "type": "text"
-    },
-    "url": {
-      "type": "uid",
-      "targetField": "beitrag_id"
+      "type": "text",
+      "unique": true,
+      "required": true
     },
     "datum": {
       "type": "date"

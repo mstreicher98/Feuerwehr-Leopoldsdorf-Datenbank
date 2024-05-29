@@ -837,12 +837,11 @@ export interface ApiBeitraegeBeitraege extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     titel: Attribute.Text;
-    beitrag_id: Attribute.Text;
-    url: Attribute.UID<'api::beitraege.beitraege', 'beitrag_id'>;
+    beitrag_id: Attribute.Text & Attribute.Required & Attribute.Unique;
     datum: Attribute.Date;
     uhrzeit: Attribute.Time & Attribute.DefaultTo<'00:00'>;
     beitrag: Attribute.Blocks;
@@ -851,7 +850,6 @@ export interface ApiBeitraegeBeitraege extends Schema.CollectionType {
     type: Attribute.Enumeration<['allgemein', 'einsatz', 'uebung', 'jugend']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::beitraege.beitraege',
       'oneToOne',
