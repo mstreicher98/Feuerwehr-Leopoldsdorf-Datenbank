@@ -22,7 +22,12 @@
       "type": "string"
     },
     "Dienststatus": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "Aktiv",
+        "Reserve",
+        "Jugend"
+      ]
     },
     "Chargen": {
       "type": "boolean",

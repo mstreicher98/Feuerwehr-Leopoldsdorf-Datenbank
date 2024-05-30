@@ -10,10 +10,11 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "4.24.3",
-    "@strapi/plugin-i18n": "4.24.3",
-    "@strapi/plugin-users-permissions": "4.24.3",
-    "@strapi/strapi": "4.24.3",
+    "@offset-dev/strapi-calendar": "^0.1.1",
+    "@strapi/plugin-cloud": "4.24.4",
+    "@strapi/plugin-i18n": "4.24.4",
+    "@strapi/plugin-users-permissions": "4.24.4",
+    "@strapi/strapi": "4.24.4",
     "better-sqlite3": "8.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -24,7 +25,8 @@
     "name": "Streicher Matthias"
   },
   "strapi": {
-    "uuid": "efdfd2a2-a7c1-4893-a83e-31fae1f2770e"
+    "uuid": "efdfd2a2-a7c1-4893-a83e-31fae1f2770e",
+    "kind": "plugin"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",

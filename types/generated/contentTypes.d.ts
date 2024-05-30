@@ -788,76 +788,31 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAuthenticationAuthentication extends Schema.CollectionType {
-  collectionName: 'authentications';
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
   info: {
-    singularName: 'authentication';
-    pluralName: 'authentications';
-    displayName: 'Authentication';
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'Events';
     description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    Username: Attribute.String & Attribute.Required & Attribute.Unique;
-    Passwort: Attribute.Password &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 6;
-      }>;
-    Vorname: Attribute.String;
-    Nachname: Attribute.String;
-    isAdmin: Attribute.Boolean;
-    isEnabled: Attribute.Boolean;
-    EhrenDG: Attribute.Boolean;
+    title: Attribute.String & Attribute.Required;
+    dateStart: Attribute.DateTime & Attribute.Required;
+    dateEnd: Attribute.DateTime & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::authentication.authentication',
+      'api::event.event',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::authentication.authentication',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiBeitraegeBeitraege extends Schema.CollectionType {
-  collectionName: 'beitraeges';
-  info: {
-    singularName: 'beitraege';
-    pluralName: 'beitraeges';
-    displayName: 'Beitraege';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    titel: Attribute.Text;
-    beitrag_id: Attribute.Text & Attribute.Required & Attribute.Unique;
-    datum: Attribute.Date;
-    uhrzeit: Attribute.Time & Attribute.DefaultTo<'00:00'>;
-    beitrag: Attribute.Blocks;
-    titelbild: Attribute.Media;
-    bilder: Attribute.Media;
-    type: Attribute.Enumeration<['allgemein', 'einsatz', 'uebung', 'jugend']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::beitraege.beitraege',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::beitraege.beitraege',
+      'api::event.event',
       'oneToOne',
       'admin::user'
     > &
@@ -882,8 +837,8 @@ export interface ApiFahrzeugeFahrzeuge extends Schema.CollectionType {
     Bezeichnung: Attribute.String;
     Funkname: Attribute.String;
     Beschreibung: Attribute.Text;
-    Titelbild: Attribute.Media;
-    Titelbild2: Attribute.Media;
+    Titelbild: Attribute.Media<'images'>;
+    Titelbild2: Attribute.Media<'images'>;
     Fahrzeugdaten: Attribute.JSON;
     sort_order: Attribute.Integer;
     Status: Attribute.String;
@@ -921,7 +876,7 @@ export interface ApiKommandoKommando extends Schema.CollectionType {
     Dienstgrad: Attribute.String;
     Funktion: Attribute.String;
     Beschreibung: Attribute.Text;
-    Profilbild: Attribute.Media;
+    Profilbild: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -954,9 +909,9 @@ export interface ApiMannschaftMannschaft extends Schema.CollectionType {
     Vorname: Attribute.String;
     Nachname: Attribute.String;
     Dienstgrad: Attribute.String;
-    Dienststatus: Attribute.String;
+    Dienststatus: Attribute.Enumeration<['Aktiv', 'Reserve', 'Jugend']>;
     Chargen: Attribute.Boolean & Attribute.DefaultTo<false>;
-    Profilbild: Attribute.Media;
+    Profilbild: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Funktion: Attribute.String;
     Standesbuchnummer: Attribute.Integer;
     EhrenDG: Attribute.Boolean & Attribute.DefaultTo<false>;
@@ -973,6 +928,35 @@ export interface ApiMannschaftMannschaft extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    titel: Attribute.Text;
+    beitrag_id: Attribute.Text & Attribute.Required & Attribute.Unique;
+    datum: Attribute.Date;
+    uhrzeit: Attribute.Time & Attribute.DefaultTo<'00:00'>;
+    beitrag: Attribute.Blocks;
+    titelbild: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    bilder: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    type: Attribute.Enumeration<['Allgemein', 'Einsatz', 'Uebung', 'Jugend']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -995,11 +979,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::authentication.authentication': ApiAuthenticationAuthentication;
-      'api::beitraege.beitraege': ApiBeitraegeBeitraege;
+      'api::event.event': ApiEventEvent;
       'api::fahrzeuge.fahrzeuge': ApiFahrzeugeFahrzeuge;
       'api::kommando.kommando': ApiKommandoKommando;
       'api::mannschaft.mannschaft': ApiMannschaftMannschaft;
+      'api::post.post': ApiPostPost;
     }
   }
 }
